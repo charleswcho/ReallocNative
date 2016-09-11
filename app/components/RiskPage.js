@@ -36,11 +36,14 @@ export default class RiskPage extends Component {
         <Slider value={this.state.riskVal}
                 onValueChange={(val) => this.setState({ riskVal: val }) }
                 minimumValue={0}
-                maximumValue={10}/>
-
-        <TouchableHighlight onPress={this.nextPage}>
-          <Text>Continue</Text>
-        </TouchableHighlight>
+                maximumValue={10}
+                minimumTrackTintColor={'#1689e5'}/>
+        <View style={styles.buttonContainer}>
+          <TouchableHighlight style={styles.button} onPress={this.nextPage}
+                              underlayColor={'#2f97eb'}>
+            <Text style={styles.buttonText}>Continue</Text>
+          </TouchableHighlight>
+        </View>
       </View>
     );
   }
@@ -48,24 +51,43 @@ export default class RiskPage extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 64 + 20,
+    paddingTop: 64 + 40,
     paddingRight: 20,
     paddingBottom: 20,
     paddingLeft: 20
   },
   title: {
     fontSize: 24,
-    fontWeight: '500',
+    fontWeight: '300',
     paddingBottom: 10,
     textAlign: 'center',
+    fontFamily: 'Helvetica Neue'
   },
   sub: {
-    fontSize: 14,
-    fontWeight: '500',
+    color: '#686868',
+    fontSize: 12,
+    fontWeight: '300',
     paddingBottom: 10,
     textAlign: 'center',
+    fontFamily: 'Helvetica Neue'
+  },
+  buttonContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'white'
   },
   button: {
-    backgroundColor: '#2f97eb'
+    width: 150,
+    paddingTop: 8,
+    paddingBottom: 8,
+    marginTop: 30,
+    borderRadius: 3,
+    backgroundColor: '#1689e5'
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 12,
+    textAlign: 'center'
   }
 });

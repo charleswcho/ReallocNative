@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import TextField from 'material-ui/TextField'
+import React, { Component } from 'react'
 
 const STYLES = {
   floatingLabelStyle: {
