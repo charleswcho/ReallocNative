@@ -8,7 +8,7 @@ import { StyleSheet,
 // Components
 import RiskProfile from './RiskProfile'
 
-// import AllocPage from './AllocPage'
+import AllocPage from './AllocPage'
 
 import NextPage from './nextPage'
 
@@ -20,7 +20,7 @@ export default class RiskPage extends Component {
   nextPage = () => {
     this.props.navigator.push({
       title: 'Alloc Page',
-      component: NextPage
+      component: AllocPage
     })
   }
 

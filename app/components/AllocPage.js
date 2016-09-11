@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 
-import { View, Text } from 'react-native'
+import { StyleSheet, View, Text } from 'react-native'
 
 // Components
 import AssetInput from './AssetInput'
 import DonutChart from './DonutChart'
 
 // Actions
-import { submitActual } from '../actions/clientActions'
+// import { submitActual } from '../actions/clientActions'
 
 export default class AllocPage extends Component {
   state = {
@@ -41,28 +41,41 @@ export default class AllocPage extends Component {
 
   render() {
     return (
-      <View>
-        <View>
-          <Text>Enter your current Allocation of assets</Text></View>
+      <View style={styles.container}>
+        <Text>Enter your current Allocation of assets</Text>
 
-        <View>
-          <Paper  zDepth={3}>
-            <DonutChart data={this.calcData()}/></Paper>
+        <DonutChart data={this.calcData()}/>
 
-          <ul>
-            {Object.keys(this.state).map((asset, idx) => {
-              return (<AssetInput key={idx} name={asset}
-                                  inputChanged={this._inputChanged}/>)
-            })}
-          </ul>
-        </View>
-
-        <View>
-          <Link  to={"/"}>Back</Link>
-          <Link  to={"/adjust"} onClick={this._handleSubmit}>
-            Continue</Link>
-        </View>
       </View>
     );
   }
 }
+
+
+const styles = StyleSheet.create({
+  container: {
+    paddingTop: 64 + 40,
+    paddingRight: 20,
+    paddingBottom: 20,
+    paddingLeft: 20
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: '300',
+    paddingBottom: 10,
+    textAlign: 'center',
+    fontFamily: 'Helvetica Neue'
+  },
+  sub: {
+    color: '#686868',
+    fontSize: 12,
+    fontWeight: '300',
+    paddingBottom: 10,
+    textAlign: 'center',
+    fontFamily: 'Helvetica Neue'
+  }
+});
+
+
+
+// <AssetInput key={idx} name={asset} inputChanged={this._inputChanged}/>
