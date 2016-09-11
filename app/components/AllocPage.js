@@ -9,13 +9,21 @@ import DonutChart from './DonutChart'
 // Actions
 // import { submitActual } from '../actions/clientActions'
 
+const DATA = {
+  "Developed Markets": 5,
+  "Emerging Markets": 5,
+  "Municipal Bonds": 5,
+  "US Total Stock Market": 5,
+  "US Large-Cap Value": 5
+}
+
 export default class AllocPage extends Component {
   state = {
-    "Developed Markets": 5,
-    "Emerging Markets": 5,
-    "Municipal Bonds": 5,
-    "US Total Stock Market": 5,
-    "US Large-Cap Value": 5
+    'Developed Markets': '',
+    'Emerging Markets': '',
+    'Municipal Bonds': '',
+    'US Total Stock Market': '',
+    'US Large-Cap Value': ''
   }
 
   calcData = () => {
@@ -27,11 +35,11 @@ export default class AllocPage extends Component {
       .map(asset => { return { x: asset, y: this.state[asset], label: asset } })
   }
 
-  _inputChanged = (e) => {
-    const val = parseInt(e.target.value, 10)
-
+  _inputChanged = (val, r) => {
+    debugger
     // Dynamically set state with computed property
     this.setState({ [e.target.name]: val })
+    console.log(this.state)
   }
 
   _handleSubmit = (e) => {
@@ -46,6 +54,11 @@ export default class AllocPage extends Component {
 
         <DonutChart data={this.calcData()}/>
 
+        {Object.keys(this.state).map((asset, idx) => {
+          return (<AssetInput key={idx} name={asset}
+                              value={this.state[asset].toString()}
+                              inputChanged={this._inputChanged}/>)
+        })}
       </View>
     );
   }
@@ -54,6 +67,8 @@ export default class AllocPage extends Component {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
+    alignItems: 'center',
     paddingTop: 64 + 40,
     paddingRight: 20,
     paddingBottom: 20,
