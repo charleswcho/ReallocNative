@@ -1,15 +1,13 @@
 import React, { Component } from 'react'
 import { View, StyleSheet, TextInput } from 'react-native';
 
-import TextField from 'react-native-md-textinput'
-
 export default class AssetInput extends Component {
   render() {
     const p = this.props
     return (
       <View style={styles.container}>
         <TextInput style={styles.textInput}
-                   keyboardStyle='number-pad'
+                   keyboardType={'phone-pad'}
                    name={p.name}
                    value={p.value}
                    placeholder={p.name}

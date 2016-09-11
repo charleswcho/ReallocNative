@@ -10,8 +10,6 @@ import RiskProfile from './RiskProfile'
 
 import AllocPage from './AllocPage'
 
-import NextPage from './nextPage'
-
 export default class RiskPage extends Component {
   state = {
     riskVal: 5

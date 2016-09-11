@@ -1,21 +1,28 @@
 import React, { Component } from 'react'
 
-import { StyleSheet, View, Text } from 'react-native'
+import { StyleSheet, View, Text, TouchableHighlight } from 'react-native'
 
 // Components
+import AdjustPage from './AdjustPage'
+
 import AssetInput from './AssetInput'
 import DonutChart from './DonutChart'
+
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 // Actions
 // import { submitActual } from '../actions/clientActions'
 
-const DATA = {
-  "Developed Markets": 5,
-  "Emerging Markets": 5,
-  "Municipal Bonds": 5,
-  "US Total Stock Market": 5,
-  "US Large-Cap Value": 5
-}
+// Constants
+import { PROFILES } from '../constants/profileConstants'
+
+const ASSETS = [
+  'Developed Markets',
+  'Emerging Markets',
+  'Municipal Bonds',
+  'US Total Stock Market',
+  'US Large-Cap Value'
+]
 
 export default class AllocPage extends Component {
   state = {
@@ -26,30 +33,31 @@ export default class AllocPage extends Component {
     'US Large-Cap Value': ''
   }
 
-  calcData = () => {
-    // Transform state into object readable by chart
-    return Object.keys(this.state)
-      .filter(asset => {
-        let val = this.state[asset]
-        return (val > 0 && !Number.isNaN(val) )})
-      .map(asset => { return { x: asset, y: this.state[asset], label: asset } })
+  nextPage = () => {
+    this.props.navigator.push({
+      title: 'Adjust Page',
+      component: AdjustPage
+    })
   }
 
-  _inputChanged = (val, r) => {
-    debugger
-    // Dynamically set state with computed property
-    this.setState({ [e.target.name]: val })
-    console.log(this.state)
+  calcData = () => {
+    // Transform state into object readable by chart
+    let calc = Object.keys(this.state)
+      .filter(asset => {
+        let val = parseInt(this.state[asset])
+        return (val > 0 && !Number.isNaN(val) )})
+      .map(asset => { return { x: asset, y: this.state[asset], label: asset } })
+
+    return calc.length === 0 ? PROFILES.Moderate : calc
   }
 
   _handleSubmit = (e) => {
-
     submitActual(this.calcData())
   }
 
   render() {
     return (
-      <View style={styles.container}>
+      <KeyboardAwareScrollView contentContainerStyle={styles.container}>
         <Text>Enter your current Allocation of assets</Text>
 
         <DonutChart data={this.calcData()}/>
@@ -57,9 +65,18 @@ export default class AllocPage extends Component {
         {Object.keys(this.state).map((asset, idx) => {
           return (<AssetInput key={idx} name={asset}
                               value={this.state[asset].toString()}
-                              inputChanged={this._inputChanged}/>)
+                              inputChanged={
+                                val => this.setState({ [ASSETS[idx]]: val })
+                              }/>)
         })}
-      </View>
+
+        <View style={styles.buttonContainer}>
+          <TouchableHighlight style={styles.button} onPress={this.nextPage}
+                              underlayColor={'#2f97eb'}>
+            <Text style={styles.buttonText}>Continue</Text>
+          </TouchableHighlight>
+        </View>
+      </KeyboardAwareScrollView>
     );
   }
 }
@@ -69,7 +86,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    paddingTop: 64 + 40,
+    paddingTop: 20,
     paddingRight: 20,
     paddingBottom: 20,
     paddingLeft: 20
@@ -88,9 +105,24 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
     textAlign: 'center',
     fontFamily: 'Helvetica Neue'
+  },
+  buttonContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'white'
+  },
+  button: {
+    width: 150,
+    paddingTop: 8,
+    paddingBottom: 8,
+    marginTop: 30,
+    borderRadius: 3,
+    backgroundColor: '#1689e5'
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 12,
+    textAlign: 'center'
   }
 });
-
-
-
-// <AssetInput key={idx} name={asset} inputChanged={this._inputChanged}/>

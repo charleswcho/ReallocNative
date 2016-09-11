@@ -2,10 +2,12 @@ import React, { Component } from 'react'
 import { StyleSheet, View, Text } from 'react-native'
 // Components
 import DonutChart from './DonutChart'
+
+// Actions
+import { submitDesired } from '../actions/clientActions'
+
 // Constants
 import { PROFILES } from '../constants/profileConstants'
-// Actions
-// import { submitDesired } from '../actions/clientActions'
 
 const PORTFOLIOS = ['Conservative', 'Moderate', 'Aggressive']
 
@@ -14,13 +16,13 @@ export default class RiskPage extends Component {
     let riskVal = this.props.riskVal
     switch (true) {
       case (riskVal < 3):
-        // submitDesired(PORTFOLIOS[0])
+        submitDesired(PORTFOLIOS[0])
         return PORTFOLIOS[0]
       case (riskVal >= 3 && riskVal <= 6):
-        // submitDesired(PORTFOLIOS[1])
+        submitDesired(PORTFOLIOS[1])
         return PORTFOLIOS[1]
       case (riskVal > 6):
-        // submitDesired(PORTFOLIOS[2])
+        submitDesired(PORTFOLIOS[2])
         return PORTFOLIOS[2]
       default:
         return;

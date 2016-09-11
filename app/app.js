@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { NavigatorIOS, StyleSheet, Image, Text, View } from 'react-native'
 
 // Local Components
-
 import RiskPage from './components/RiskPage'
 
 export default class App extends Component {

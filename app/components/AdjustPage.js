@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 
+import { StyleSheet, View, Text } from 'react-native'
+
 // Components
 import DonutChart from './DonutChart'
-import Paper from 'material-ui/Paper'
 
 // Stores
 import ResultStore from '../stores/resultStore'
@@ -48,22 +49,20 @@ export default class AdjustPage extends Component {
     let diff = this.parseDiff();
 
     return (
-      <ul className='diffs'>
         {
           Object.keys(diff).map((asset, idx) => {
-            return <li key={idx}><span>{asset + ' '}</span>
-              {this.formatAssetVal(asset, diff[asset])}</li>
+            return <View key={idx}><Text>{asset + ' '}</Text>
+              {this.formatAssetVal(asset, diff[asset])}</View>
           })
         }
-      </ul>
     )
   }
 
   formatAssetVal(asset, val) {
     return (
-      <span className={(val[0] < 0) ? 'negative' : 'positive'}>
+      <Text className={(val[0] < 0) ? 'negative' : 'positive'}>
          {val[1].toFixed(2) + '% | $ ' + val[0].toFixed(2)}
-      </span>
+      </Text>
     )
   }
 
@@ -77,18 +76,16 @@ export default class AdjustPage extends Component {
 
   render() {
     return (
-      <div className="adjust-page">
-        <div className='intro'>
-          <h1>See what you need to change to achieve your goal</h1></div>
+      <View>
+        <Text>See what you need to change to achieve your goal</Text>
 
-        <Paper className='chart' zDepth={3}>Current Portfolio
-          <DonutChart data={this.state.actualPortfolio}/></Paper>
+        <Text>Current Portfolio</Text>
+        <DonutChart data={this.state.actualPortfolio}/>
 
-        {this.renderDiff()}
 
-        <Paper className='chart' zDepth={3}>Target Portfolio
-          <DonutChart data={this.state.desiredPortfolio}/></Paper>
-      </div>
+        <Text>Target Portfolio</text>
+        <DonutChart data={this.state.desiredPortfolio}/>
+      </View>
     );
   }
 }
