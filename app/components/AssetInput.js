@@ -19,10 +19,13 @@ export default class AssetInput extends Component {
 const styles = StyleSheet.create({
   container: {
     height: 30,
-    width: 200,
-    marginBottom: 20,
-    borderWidth: 1
-
+    width: 250,
+    marginBottom: 15,
+    borderLeftWidth: 0,
+    borderTopWidth: 0,
+    borderRightWidth: 0,
+    borderBottomWidth: 2,
+    borderColor: '#1689e5'
   },
   textInput: {
     height: 30,

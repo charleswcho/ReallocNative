@@ -2,14 +2,10 @@ import React, { Component } from 'react'
 import { StyleSheet, View, Text } from 'react-native'
 // Components
 import DonutChart from './DonutChart'
-
 // Actions
 import { submitDesired } from '../actions/clientActions'
-
 // Constants
-import { PROFILES } from '../constants/profileConstants'
-
-const PORTFOLIOS = ['Conservative', 'Moderate', 'Aggressive']
+import { PROFILES, PORTFOLIOS } from '../constants/profileConstants'
 
 export default class RiskPage extends Component {
   switchProfile() {
