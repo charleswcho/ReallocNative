@@ -1,15 +1,11 @@
 import React, { Component } from 'react'
 import { StyleSheet, View, Text, TouchableHighlight } from 'react-native'
-
 // Components
 import AdjustPage from './AdjustPage'
-
 import AssetInput from './AssetInput'
 import DonutChart from './DonutChart'
 import Button from './Button'
-
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
-
 // Actions
 import { submitActual } from '../actions/clientActions'
 // Constants
@@ -56,11 +52,11 @@ export default class AllocPage extends Component {
         <DonutChart data={this.calcData()}/>
 
         {Object.keys(this.state).map((asset, idx) => {
-          return (<AssetInput key={idx} name={asset}
-                              value={this.state[asset].toString()}
-                              inputChanged={
-                                val => this.setState({ [ASSETS[idx]]: val })
-                              }/>)})}
+          return (<AssetInput
+                    key={idx} name={asset}
+                    value={this.state[asset].toString()}
+                    inputChanged={val => this.setState({ [ASSETS[idx]]: val })}/>)
+        })}
 
         <Button name='Continue' onPress={this.nextPage}/>
       </KeyboardAwareScrollView>

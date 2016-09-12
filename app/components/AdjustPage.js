@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { StyleSheet, View, Text } from 'react-native'
-
 // Components
 import DonutChart from './DonutChart'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
@@ -78,7 +77,6 @@ export default class AdjustPage extends Component {
   }
 
   render() {
-    this.renderDiff();
     return (
       <KeyboardAwareScrollView contentContainerStyle={styles.container}>
         <Text style={appStyles.title} >

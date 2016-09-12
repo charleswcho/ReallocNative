@@ -27,16 +27,15 @@ export default class RiskPage extends Component {
   render() {
     return (
       <View style={styles.container}>
-          <Text style={appStyles.title}>Start by selecting a risk profile</Text>
-          <Text style={appStyles.sub}>
-            Don't worry, you call always come back and change it</Text>
+        <Text style={appStyles.title}>Start by selecting a risk profile</Text>
+        <Text style={appStyles.sub}>
+          Don't worry, you call always come back and change it</Text>
 
         <RiskProfile riskVal={this.state.riskVal}/>
 
         <Slider value={this.state.riskVal}
                 onValueChange={(val) => this.setState({ riskVal: val }) }
-                minimumValue={0}
-                maximumValue={10}
+                minimumValue={0} maximumValue={10}
                 minimumTrackTintColor={'#1689e5'}/>
 
         <Button name='Continue' onPress={this.nextPage}/>
