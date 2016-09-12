@@ -41,7 +41,8 @@ export default class AllocPage extends Component {
       .filter(asset => {
         let val = parseInt(this.state[asset])
         return (val > 0 && !Number.isNaN(val) )})
-      .map(asset => { return { x: asset, y: this.state[asset], label: asset } })
+      .map(asset => {
+        return { x: asset, y: parseInt(this.state[asset]), label: asset } })
 
     return calc.length === 0 ? PROFILES.Moderate : calc
   }

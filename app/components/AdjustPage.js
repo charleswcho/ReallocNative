@@ -4,6 +4,8 @@ import { StyleSheet, View, Text } from 'react-native'
 // Components
 import DonutChart from './DonutChart'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+// Actions
+import { clearData } from '../actions/clientActions'
 // Stores
 import ResultStore from '../stores/resultStore'
 // Styles
@@ -22,6 +24,7 @@ export default class AdjustPage extends Component {
 
   componentWillUnmount()  {
     ResultStore.removeChangeListener(this._resultsChanged);
+    clearData()
   }
 
   parseDiff() {
@@ -29,6 +32,10 @@ export default class AdjustPage extends Component {
         desiredPort = this.state.desiredPortfolio,
         actualPort = this.state.actualPortfolio,
         actualSum = this.state.actualSum
+
+    console.log('desired', desiredPort)
+    console.log('actual', actualPort)
+    console.log('sum', actualSum)
 
     desiredPort.forEach((asset, idx) => {
       // Calculate the target value and find the difference and percent difference with the actual value of the user's asset

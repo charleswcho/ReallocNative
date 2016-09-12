@@ -6,6 +6,8 @@ import DonutChart from './DonutChart'
 import { submitDesired } from '../actions/clientActions'
 // Constants
 import { PROFILES, PORTFOLIOS } from '../constants/profileConstants'
+// Styles
+import { appStyles } from './appStyles'
 
 export default class RiskPage extends Component {
   switchProfile() {
@@ -29,7 +31,7 @@ export default class RiskPage extends Component {
     let profile = this.switchProfile()
     return (
       <View style={styles.container}>
-        <Text>{profile}</Text>
+        <Text style={appStyles.title}>{profile}</Text>
         <DonutChart data={PROFILES[profile]}/>
       </View>
     );
@@ -39,9 +41,12 @@ export default class RiskPage extends Component {
 const styles = StyleSheet.create({
   container: {
     height: 300,
-    width: 300,
     marginTop: 20,
     marginBottom: 20,
-    backgroundColor: '#2f97eb',
+    paddingTop: 10,
+    paddingBottom: 10,
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
   }
 });

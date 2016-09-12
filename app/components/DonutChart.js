@@ -33,7 +33,7 @@ export default class DonutChart extends Component {
       <VictoryPie height={250}
                   width={250}
                   data={this.props.data}
-                  innerRadius={90}
+                  innerRadius={80}
                   colorScale={COLORS}
                   style={STYLES}
                   animate={ANIMATE}/>

@@ -53,7 +53,6 @@ AppDispatcher.register((action) => {
       resultStore.emit(CHANGE_EVENT);
       break;
     case ACTIONS.CLEAR_DATA:
-      _desiredPortfolio = []
       _actualPortfolio = []
       _actualSum = 0
       resultStore.emit(CHANGE_EVENT);
