@@ -12,8 +12,9 @@ Realloc ported to mobile using React Native
 
 2. Install
 
+  cd into project directory then run:
+
   ```
-  $ cd reallocNative
   $ npm install
 
   ```
