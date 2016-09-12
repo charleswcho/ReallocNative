@@ -4,6 +4,9 @@ import { NavigatorIOS, StyleSheet, Image, Text, View } from 'react-native'
 // Local Components
 import RiskPage from './components/RiskPage'
 
+// Constants
+import { RISK } from './constants/contentConstants'
+
 export default class App extends Component {
   render() {
     return (
@@ -13,7 +16,7 @@ export default class App extends Component {
         tintColor='#fff'
         initialRoute={{
           component: RiskPage,
-          title: 'Risk',
+          title: RISK.pageTitle,
         }}
         style={{flex: 1}} />
     );

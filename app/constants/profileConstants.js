@@ -26,10 +26,12 @@ export const PROFILES = {
 
 export const PORTFOLIOS = ['Conservative', 'Moderate', 'Aggressive']
 
-export const ASSETS = [
-  'Developed Markets',
-  'Emerging Markets',
-  'Municipal Bonds',
-  'US Total Stock Market',
-  'US Large-Cap Value'
-]
+export const STATE = {
+  'Developed Markets': '',
+  'Emerging Markets': '',
+  'Municipal Bonds': '',
+  'US Total Stock Market': '',
+  'US Large-Cap Value': ''
+}
+
+export const ASSETS = Object.keys(STATE)

@@ -9,24 +9,21 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 // Actions
 import { submitActual } from '../actions/clientActions'
 // Constants
-import { PROFILES, ASSETS } from '../constants/profileConstants'
+import { PROFILES, ASSETS, STATE } from '../constants/profileConstants'
+import { ALLOC, ADJUST, BUTTON } from '../constants/contentConstants'
 // Styles
 import { appStyles } from './appStyles'
 
 export default class AllocPage extends Component {
-  state = {
-    'Developed Markets': '',
-    'Emerging Markets': '',
-    'Municipal Bonds': '',
-    'US Total Stock Market': '',
-    'US Large-Cap Value': ''
+  componentWillMount () {
+    this.setState(STATE)
   }
 
   nextPage = () => {
     submitActual(this.calcData())
 
     this.props.navigator.push({
-      title: 'Adjust',
+      title: ADJUST.pageTitle,
       component: AdjustPage
     })
   }
@@ -46,8 +43,7 @@ export default class AllocPage extends Component {
   render() {
     return (
       <KeyboardAwareScrollView contentContainerStyle={styles.container}>
-        <Text style={appStyles.title}>
-          Enter your current Allocation of assets</Text>
+        <Text style={appStyles.title}>{ALLOC.title}</Text>
 
         <DonutChart data={this.calcData()}/>
 
@@ -58,7 +54,7 @@ export default class AllocPage extends Component {
                     inputChanged={val => this.setState({ [ASSETS[idx]]: val })}/>)
         })}
 
-        <Button name='Continue' onPress={this.nextPage}/>
+        <Button name={BUTTON.name} onPress={this.nextPage}/>
       </KeyboardAwareScrollView>
     );
   }

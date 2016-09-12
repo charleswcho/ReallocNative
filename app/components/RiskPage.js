@@ -9,6 +9,8 @@ import { StyleSheet,
 import RiskProfile from './RiskProfile'
 import AllocPage from './AllocPage'
 import Button from './Button'
+// Constants
+import { RISK, ADJUST, BUTTON } from '../constants/contentConstants'
 // Styles
 import { appStyles } from './appStyles'
 
@@ -19,7 +21,7 @@ export default class RiskPage extends Component {
 
   nextPage = () => {
     this.props.navigator.push({
-      title: 'Allocation',
+      title: ADJUST.pageTitle,
       component: AllocPage
     })
   }
@@ -27,9 +29,8 @@ export default class RiskPage extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={appStyles.title}>Start by selecting a risk profile</Text>
-        <Text style={appStyles.sub}>
-          Don't worry, you call always come back and change it</Text>
+        <Text style={appStyles.title}>{RISK.title}</Text>
+        <Text style={appStyles.sub}>{RISK.sub}</Text>
 
         <RiskProfile riskVal={this.state.riskVal}/>
 
@@ -37,7 +38,7 @@ export default class RiskPage extends Component {
                 minimumTrackTintColor={'#1689e5'}
                 onValueChange={(val) => this.setState({ riskVal: val }) }/>
 
-        <Button name='Continue' onPress={this.nextPage}/>
+        <Button name={BUTTON.name} onPress={this.nextPage}/>
       </View>
     );
   }

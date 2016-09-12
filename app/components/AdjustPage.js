@@ -5,6 +5,8 @@ import DonutChart from './DonutChart'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 // Actions
 import { clearData } from '../actions/clientActions'
+// Constants
+import { ADJUST } from '../constants/contentConstants'
 // Stores
 import ResultStore from '../stores/resultStore'
 // Styles
@@ -31,10 +33,6 @@ export default class AdjustPage extends Component {
         desiredPort = this.state.desiredPortfolio,
         actualPort = this.state.actualPortfolio,
         actualSum = this.state.actualSum
-
-    console.log('desired', desiredPort)
-    console.log('actual', actualPort)
-    console.log('sum', actualSum)
 
     desiredPort.forEach((asset, idx) => {
       // Calculate the target value and find the difference and percent difference with the actual value of the user's asset
@@ -79,16 +77,15 @@ export default class AdjustPage extends Component {
   render() {
     return (
       <KeyboardAwareScrollView contentContainerStyle={styles.container}>
-        <Text style={appStyles.title} >
-          See what you need to change to achieve your goal</Text>
+        <Text style={appStyles.title}>{ADJUST.title}</Text>
 
         <DonutChart data={this.state.actualPortfolio}/>
-        <Text style={appStyles.sub}>Current Portfolio</Text>
+        <Text style={appStyles.sub}>{ADJUST.actual}</Text>
 
         {this.renderDiff()}
 
         <DonutChart data={this.state.desiredPortfolio}/>
-        <Text style={appStyles.sub}>Target Portfolio</Text>
+        <Text style={appStyles.sub}>{ADJUST.target}</Text>
       </KeyboardAwareScrollView>
     );
   }
