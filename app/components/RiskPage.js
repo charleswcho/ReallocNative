@@ -19,7 +19,7 @@ export default class RiskPage extends Component {
 
   nextPage = () => {
     this.props.navigator.push({
-      title: 'Alloc Page',
+      title: 'Allocation',
       component: AllocPage
     })
   }
@@ -33,10 +33,9 @@ export default class RiskPage extends Component {
 
         <RiskProfile riskVal={this.state.riskVal}/>
 
-        <Slider value={this.state.riskVal}
-                onValueChange={(val) => this.setState({ riskVal: val }) }
-                minimumValue={0} maximumValue={10}
-                minimumTrackTintColor={'#1689e5'}/>
+        <Slider value={this.state.riskVal} minimumValue={0} maximumValue={10}
+                minimumTrackTintColor={'#1689e5'}
+                onValueChange={(val) => this.setState({ riskVal: val }) }/>
 
         <Button name='Continue' onPress={this.nextPage}/>
       </View>

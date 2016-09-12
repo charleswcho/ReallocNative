@@ -26,7 +26,7 @@ export default class AllocPage extends Component {
     submitActual(this.calcData())
 
     this.props.navigator.push({
-      title: 'Adjust Page',
+      title: 'Adjust',
       component: AdjustPage
     })
   }

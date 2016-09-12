@@ -8,9 +8,12 @@ export default class App extends Component {
   render() {
     return (
       <NavigatorIOS
+        barTintColor='#17406B'
+        titleTextColor='#fff'
+        tintColor='#fff'
         initialRoute={{
           component: RiskPage,
-          title: 'Risk Page',
+          title: 'Risk',
         }}
         style={{flex: 1}} />
     );
