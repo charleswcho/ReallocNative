@@ -47,11 +47,10 @@ export default class AllocPage extends Component {
 
         <DonutChart data={this.calcData()}/>
 
-        {Object.keys(this.state).map((asset, idx) => {
+        {ASSETS.map((asset, idx) => {
           return (<AssetInput
-                    key={idx} name={asset}
-                    value={this.state[asset].toString()}
-                    inputChanged={val => this.setState({ [ASSETS[idx]]: val })}/>)
+            key={idx} name={asset} value={this.state[asset].toString()}
+            inputChanged={val => this.setState({ [ASSETS[idx]]: val })}/>)
         })}
 
         <Button name={BUTTON.name} onPress={this.nextPage}/>

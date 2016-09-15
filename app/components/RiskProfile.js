@@ -14,13 +14,10 @@ export default class RiskPage extends Component {
     let riskVal = this.props.riskVal
     switch (true) {
       case (riskVal < 3):
-        submitDesired(PORTFOLIOS[0])
         return PORTFOLIOS[0]
       case (riskVal >= 3 && riskVal <= 6):
-        submitDesired(PORTFOLIOS[1])
         return PORTFOLIOS[1]
       case (riskVal > 6):
-        submitDesired(PORTFOLIOS[2])
         return PORTFOLIOS[2]
       default:
         return;
@@ -29,6 +26,7 @@ export default class RiskPage extends Component {
 
   render() {
     let profile = this.switchProfile()
+    submitDesired(profile)
     return (
       <View style={styles.container}>
         <Text style={appStyles.title}>{profile}</Text>
