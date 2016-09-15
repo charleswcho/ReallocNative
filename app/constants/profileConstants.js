@@ -24,7 +24,7 @@ export const PROFILES = {
   ]
 }
 
-export const PORTFOLIOS = ['Conservative', 'Moderate', 'Aggressive']
+export const PORTFOLIOS = Object.keys(PROFILES)
 
 export const STATE = {
   'Developed Markets': '',
