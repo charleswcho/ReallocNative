@@ -1,10 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet,
-         View,
-         Text,
-         Slider,
-         TouchableHighlight} from 'react-native'
-
+import { StyleSheet, View, Text, Slider, TouchableHighlight} from 'react-native'
 // Components
 import RiskProfile from './RiskProfile'
 import AllocPage from './AllocPage'
